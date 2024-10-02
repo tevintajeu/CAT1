@@ -12,7 +12,7 @@ class DataBase
         $this->conn = new mysqli($config->servername, $config->username, $config->password, $config->databasename);
 
         if ($this->conn->connect_error) {
-            return false;
+            die("Connection failed: " . $this->conn->connect_error);
         } else {
             return true;
         }
