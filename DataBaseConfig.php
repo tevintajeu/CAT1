@@ -12,7 +12,7 @@ class DataBaseConfig
 
         $this->servername = 'localhost';
         $this->username = 'root';
-        $this->password = '';
+        $this->password = 'q2e4t6u8.';
         $this->databasename = 'CAT1';
 
     }
