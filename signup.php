@@ -1,11 +1,24 @@
 <?php
 require "DataBase.php";
 $db = new DataBase();
-if (isset($_POST['fullname']) && isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password'])) {
+
+$fullname = $_POST['fullname'] ?? null;
+$email = $_POST['email'] ?? null;
+$username = $_POST['username'] ?? null;
+$password = $_POST['password'] ?? null;
+
+if ($fullname && $email && $username && $password) {
     if ($db->dbConnect()) {
-        if ($db->signUp("users", $_POST['fullname'], $_POST['email'], $_POST['username'], $_POST['password'])) {
+        $signUpSuccess = $db->signUp("users", $fullname, $email, $username, $password);
+        if ($signUpSuccess) {
             echo "Sign Up Success";
-        } else echo "Sign up Failed";
-    } else echo "Error: Database connection";
-} else echo "All fields are required";
+        } else {
+            echo "Sign up Failed";
+        }
+    } else {
+        echo "Error: Database connection";
+    }
+} else {
+    echo "All fields are required";
+}
 ?>
